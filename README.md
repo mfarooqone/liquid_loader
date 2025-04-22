@@ -21,6 +21,21 @@ This package is licensed under the BSD-3-Clause License. See the [LICENSE](LICEN
 
 To install the `liquid_loader` package, add the following dependency in your `pubspec.yaml` file:
 
+## Example
+         LiquidLoader(
+            width: 300,
+            height: 500,
+            liquidColor: Colors.blue,
+            borderColor: Colors.grey,
+            capColor: Colors.orange,
+            liquidLevel: 0.6,
+            text: "60%",
+            textStyle: TextStyle(),
+            shape: Shape.rectangle,
+            hideCap: true,
+         ),
+
 ```yaml
 dependencies:
   liquid_loader: any
+
