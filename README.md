@@ -23,15 +23,18 @@ To install the `liquid_loader` package, add the following dependency in your `pu
 
 ## Example
 
-      LiquidLoader(
-         liquidColor: Colors.green, // Custom green liquid
-         borderColor: Colors.red,   // Red border
-         capColor: Colors.orange,   // Orange cap
-         liquidLevel: 0.8,          // 80% liquid level
-         shape: Shape.triangle,     // Triangular bottle shape
-         text: '80%',               // Display text inside the bottle
-         textStyle: TextStyle(color: Colors.black, fontSize: 18),
-      )
+         LiquidLoader(
+            width: 300,  // Width of the loader
+            height: 500, // Height of the loader
+            liquidColor: Colors.blue, // Liquid color
+            borderColor: Colors.grey, // Border color
+            capColor: Colors.orange, // Cap color
+            liquidLevel: 0.6, // Liquid level (0.0 to 1.0)
+            text: "60%", // Text inside the bottle
+            textStyle: TextStyle(color: Colors.white, fontSize: 20), // Text style
+            shape: Shape.rectangle, // Bottle shape: circle, triangle, rectangle
+            hideCap: true, // Whether to hide the cap
+         ),
 
 
 
