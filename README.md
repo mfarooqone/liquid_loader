@@ -72,6 +72,7 @@ This `README.md` provides all necessary information to help users get started wi
 
 ## Contact
 For any inquiries, please reach out to mfarooqiqbal143@gmail.com
+
 Made with ❤️ by Muhammad Farooq Iqbal
 
 ```yaml
