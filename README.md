@@ -23,37 +23,16 @@ To install the `liquid_loader` package, add the following dependency in your `pu
 
 ## Example
 
-import 'package:flutter/material.dart';
-import 'package:liquid_loader/liquid_loader.dart';
+      LiquidLoader(
+         liquidColor: Colors.green, // Custom green liquid
+         borderColor: Colors.red,   // Red border
+         capColor: Colors.orange,   // Orange cap
+         liquidLevel: 0.8,          // 80% liquid level
+         shape: Shape.triangle,     // Triangular bottle shape
+         text: '80%',               // Display text inside the bottle
+         textStyle: TextStyle(color: Colors.black, fontSize: 18),
+      )
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text("Liquid Loader Example")),
-        body: Center(
-          child: LiquidLoader(
-            width: 300,  // Width of the loader
-            height: 500, // Height of the loader
-            liquidColor: Colors.blue, // Liquid color
-            borderColor: Colors.grey, // Border color
-            capColor: Colors.orange, // Cap color
-            liquidLevel: 0.6, // Liquid level (0.0 to 1.0)
-            text: "60%", // Text inside the bottle
-            textStyle: TextStyle(color: Colors.white, fontSize: 20), // Text style
-            shape: Shape.rectangle, // Bottle shape: circle, triangle, rectangle
-            hideCap: true, // Whether to hide the cap
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 
 ## Parameters
@@ -76,11 +55,8 @@ We welcome contributions to this package! If you find bugs or want to suggest im
 ## Contact
 For any inquiries, please reach out to mfarooqiqbal143@gmail.com
 
-Made with ❤️ by Muhammad Farooq Iqbal
 
-
-
-### Key Sections in the `README.md`:
+### Key Sections:
 
 1. **Introduction**: Provides a description of the package and its features.
 2. **License**: Specifies the BSD-3-Clause license for the package.
@@ -95,6 +71,8 @@ Made with ❤️ by Muhammad Farooq Iqbal
 
 This `README.md` provides all necessary information to help users get started with your `liquid_loader` package and integrate it into their apps. Let me know if you need further adjustments or additions!
 
+
+Made with ❤️ by Muhammad Farooq Iqbal
 
 ```yaml
 dependencies:
