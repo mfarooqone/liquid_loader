@@ -55,10 +55,6 @@ To install the `liquid_loader` package, add the following dependency in your `pu
 
 We welcome contributions to this package! If you find bugs or want to suggest improvements, feel free to open an issue or submit a pull request on GitHub.
 
-## Contact
-For any inquiries, please reach out to mfarooqiqbal143@gmail.com
-
-
 ### Key Sections:
 
 1. **Introduction**: Provides a description of the package and its features.
@@ -74,7 +70,8 @@ For any inquiries, please reach out to mfarooqiqbal143@gmail.com
 
 This `README.md` provides all necessary information to help users get started with your `liquid_loader` package and integrate it into their apps. Let me know if you need further adjustments or additions!
 
-
+## Contact
+For any inquiries, please reach out to mfarooqiqbal143@gmail.com
 Made with ❤️ by Muhammad Farooq Iqbal
 
 ```yaml
