@@ -6,41 +6,57 @@ import 'package:liquid_loader/src/triangular_painter.dart';
 
 import 'src/border_widget.dart';
 
-// Enum to define the shape of the bottle (triangle, circle, or rectangle)
-enum Shape { triangle, circle, rectangle }
+/// Enum representing the shape of the loader used in the LiquidLoader widget.
+///
+/// The available shapes are:
+/// - [Shape.triangle]: A triangular-shaped.
+/// - [Shape.circle]: A circular-shaped.
+/// - [Shape.rectangle]: A rectangular-shaped.
+/// The available shapes are as follows:
+enum Shape {
+  /// A triangular-shaped.
+  triangle,
 
+  /// A circular-shaped.
+  circle,
+
+  /// A rectangular-shaped.
+  rectangle,
+}
+
+/// A customizable liquid loader widget, representing a liquid bottle with animation and text.
 class LiquidLoader extends StatefulWidget {
-  // The color of the liquid in the bottle
+  /// The color of the liquid in the bottle.
   final Color liquidColor;
 
-  // The color of the border around the bottle
+  /// The color of the border around the bottle.
   final Color borderColor;
 
-  // The color of the cap
+  /// The color of the cap.
   final Color capColor;
 
-  // The current level of liquid inside the bottle (0.0 to 1.0)
+  /// The current level of liquid inside the bottle, ranging from 0.0 (empty) to 1.0 (full).
   final double liquidLevel;
 
-  // The text to display inside the bottle
+  /// The text to display inside the bottle.
   final String text;
 
-  // The text style to be applied to the text inside the bottle
+  /// The text style to be applied to the text inside the bottle.
   final TextStyle textStyle;
 
-  // The height of the bottle
+  /// The height of the bottle.
   final double height;
 
-  // The width of the bottle
+  /// The width of the bottle.
   final double width;
 
-  // The shape of the bottle: triangle, circle, or rectangle
+  /// The shape of the bottle, which can be triangle, circle, or rectangle.
   final Shape shape;
 
-  // Whether to hide the cap of the bottle
+  /// Whether to hide the cap of the bottle.
   final bool hideCap;
 
-  // Constructor for the LiquidLoader widget with optional parameters
+  /// Constructor for the LiquidLoader widget with optional parameters.
   const LiquidLoader({
     super.key,
     this.liquidColor = Colors.blue, // Default liquid color is blue
@@ -59,9 +75,10 @@ class LiquidLoader extends StatefulWidget {
   LiquidLoaderState createState() => LiquidLoaderState(); // Creates the state for LiquidLoader
 }
 
+/// State for the [LiquidLoader] widget, responsible for managing animations and rendering.
 class LiquidLoaderState extends State<LiquidLoader>
     with TickerProviderStateMixin, BorderWidget {
-  // Animation controller to control the wave animation
+  /// Animation controller to control the wave animation.
   late final AnimationController _animationController;
 
   @override
@@ -79,7 +96,7 @@ class LiquidLoaderState extends State<LiquidLoader>
     )..repeat(); // Repeat the animation to simulate continuous wave movement
   }
 
-  // Returns the appropriate painter based on the selected shape (triangle, circle, or rectangle)
+  /// Returns the appropriate painter based on the selected shape (triangle, circle, or rectangle).
   CustomPainter getShapePainter() {
     switch (widget.shape) {
       case Shape.triangle:

@@ -3,13 +3,26 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:liquid_loader/src/rectangle_painter.dart';
 
-// SphericalBottlePainter is a CustomPainter that draws a spherical-shaped bottle
-// with waves, bubbles, and a cap. It also includes a glossy overlay effect.
+/// SphericalBottlePainter is a CustomPainter that draws a spherical-shaped bottle
+/// with waves, bubbles, and a cap. It also includes a glossy overlay effect.
+///
+/// This class is responsible for painting the different elements of the spherical
+/// bottle including the waves of liquid, bubbles floating inside, and the bottle cap.
 class SphericalBottlePainter extends CustomPainterWidget {
-  // Constant breakpoint for when the bottle neck is cut off based on aspect ratio
+  /// Constant breakpoint for when the bottle neck is cut off based on aspect ratio.
+  ///
+  /// This value determines whether the bottle is considered to have a "portrait" shape
+  /// based on its aspect ratio. If the height is greater than this breakpoint,
+  /// the bottle is considered a portrait bottle, otherwise, it is treated as a landscape bottle.
   static const breakPoint = 1.2;
 
-  // Constructor to initialize the painter with wave and bubble data
+  /// Constructor to initialize the painter with wave and bubble data.
+  ///
+  /// [waves] List of wave layers to be drawn inside the bottle.
+  /// [bubbles] List of bubble widgets to be drawn inside the bottle.
+  /// [liquidLevel] The level of liquid inside the bottle, from 0.0 (empty) to 1.0 (full).
+  /// [borderColor] The color of the bottle's border.
+  /// [capColor] The color of the bottle's cap.
   SphericalBottlePainter({
     super.repaint,
     required super.waves,
@@ -19,7 +32,14 @@ class SphericalBottlePainter extends CustomPainterWidget {
     required super.capColor,
   });
 
-  // Function to paint the empty bottle outline
+  /// Function to paint the empty bottle outline.
+  ///
+  /// This method draws the outline of the bottle, which can either be a circular or
+  /// a more traditional bottle shape depending on the aspect ratio of the provided size.
+  ///
+  /// [canvas] The canvas where the painting will be drawn.
+  /// [size] The size of the bottle (width and height).
+  /// [paint] The paint object used for drawing the bottle outline.
   @override
   void paintEmptyBottle(Canvas canvas, Size size, Paint paint) {
     final r = math.min(
@@ -64,7 +84,14 @@ class SphericalBottlePainter extends CustomPainterWidget {
     );
   }
 
-  // Function to paint the mask that holds the liquid (used for liquid fill)
+  /// Function to paint the mask that holds the liquid (used for liquid fill).
+  ///
+  /// This method creates a mask for the liquid fill area inside the bottle. It draws a
+  /// circle for portrait-shaped bottles and a rectangle for landscape-shaped bottles.
+  ///
+  /// [canvas] The canvas where the mask will be drawn.
+  /// [size] The size of the bottle (width and height).
+  /// [paint] The paint object used for drawing the mask.
   @override
   void paintBottleMask(Canvas canvas, Size size, Paint paint) {
     final r = math.min(size.width, size.height);
@@ -95,7 +122,14 @@ class SphericalBottlePainter extends CustomPainterWidget {
     );
   }
 
-  // Function to paint the liquid waves inside the bottle
+  /// Function to paint the liquid waves inside the bottle.
+  ///
+  /// This method is responsible for drawing the waves inside the bottle based on the
+  /// current liquid level and the wave properties.
+  ///
+  /// [canvas] The canvas where the waves will be drawn.
+  /// [size] The size of the bottle (width and height).
+  /// [paint] The paint object used for drawing the waves.
   @override
   void paintWaves(Canvas canvas, Size size, Paint paint) {
     for (var wave in waves) {
@@ -132,7 +166,14 @@ class SphericalBottlePainter extends CustomPainterWidget {
     }
   }
 
-  // Function to paint the bubbles on top of the liquid
+  /// Function to paint the bubbles on top of the liquid.
+  ///
+  /// This method paints the bubbles on top of the liquid waves based on their current
+  /// position, size, and opacity.
+  ///
+  /// [canvas] The canvas where the bubbles will be drawn.
+  /// [size] The size of the bottle (width and height).
+  /// [paint] The paint object used for drawing the bubbles.
   @override
   void paintBubbles(Canvas canvas, Size size, Paint paint) {
     for (var bubble in bubbles) {
@@ -148,7 +189,14 @@ class SphericalBottlePainter extends CustomPainterWidget {
     }
   }
 
-  // Function to paint the glossy overlay effect on the liquid
+  /// Function to paint the glossy overlay effect on the liquid.
+  ///
+  /// This function adds a glossy effect on top of the liquid to simulate a shiny
+  /// surface, improving the visual appeal.
+  ///
+  /// [canvas] The canvas where the glossy overlay will be drawn.
+  /// [size] The size of the bottle (width and height).
+  /// [paint] The paint object used for the glossy effect.
   @override
   void paintGlossyOverlay(Canvas canvas, Size size, Paint paint) {
     final r = math.min(size.width, size.height);
@@ -200,13 +248,20 @@ class SphericalBottlePainter extends CustomPainterWidget {
     );
   }
 
-  // Function to paint the cap of the bottle
+  /// Function to paint the cap of the bottle.
+  ///
+  /// This method draws the cap on top of the neck of the bottle, but it only
+  /// draws the cap for bottles with a landscape orientation.
+  ///
+  /// [canvas] The canvas where the cap will be drawn.
+  /// [size] The size of the bottle (width and height).
+  /// [paint] The paint object used for the cap.
   @override
   void paintCap(Canvas canvas, Size size, Paint paint) {
     if (size.height / size.width < breakPoint) {
       return; // Skip if the bottle is 'portrait'
     }
-    final capTop = 0.0;
+    const capTop = 0.0;
     final capBottom = size.width * 0.2;
     final capMid = (capBottom - capTop) / 2;
     final capL = size.width * 0.33 + 5;
