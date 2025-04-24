@@ -1,6 +1,6 @@
 name: liquid_loader
 description: This library adds a liquid loading effect to your screen. Use it as a loading indicator, progress tracker, or any measurement tool.
-version: 0.0.2
+version: 0.0.3
 
 homepage: https://github.com/mfarooqone/liquid_loader
 repository: https://github.com/mfarooqone/liquid_loader
