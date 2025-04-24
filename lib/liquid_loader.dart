@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:liquid_loader/src/circular_painter.dart';
 import 'package:liquid_loader/src/rectangle_painter.dart';
 import 'package:liquid_loader/src/spherical_painter.dart';
 import 'package:liquid_loader/src/triangular_painter.dart';
@@ -16,6 +17,9 @@ import 'src/border_widget.dart';
 enum Shape {
   /// A triangular-shaped.
   triangle,
+
+  /// A spherical-shaped.
+  spherical,
 
   /// A circular-shaped.
   circle,
@@ -111,7 +115,7 @@ class LiquidLoaderState extends State<LiquidLoader>
                   ? Colors.transparent
                   : widget.capColor, // Conditionally hide or show the cap
         );
-      case Shape.circle:
+      case Shape.spherical:
         // Return the painter for a circular-shaped bottle
         return SphericalBottlePainter(
           waves: waves,
@@ -128,6 +132,14 @@ class LiquidLoaderState extends State<LiquidLoader>
           liquidLevel: widget.liquidLevel,
           borderColor: widget.borderColor,
           capColor: widget.capColor,
+        );
+      case Shape.circle:
+        // Return the painter for a circle-shaped bottle
+        return CustomCirclePainterWidget(
+          waves: waves,
+          liquidLevel: widget.liquidLevel,
+          borderColor: widget.borderColor,
+          bubbles: bubbles,
         );
     }
   }
