@@ -1,8 +1,9 @@
 name: liquid_loader
-description: This library add a bottle widget to your screen. You can use it as a loading indicator, a progress tracker, or any kind of measurement suits your needs.
-homepage: https://github.com/hucancode/water_bottle
+description: This library adds a liquid loading effect to your screen. Use it as a loading indicator, progress tracker, or any measurement tool.
+version: 0.0.2
 
-version: 0.0.1
+homepage: https://github.com/mfarooqone/liquid_loader
+repository: https://github.com/mfarooqone/liquid_loader
 
 environment:
   sdk: ^3.7.2
@@ -17,7 +18,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-    
+
 flutter:
   uses-material-design: true
-
