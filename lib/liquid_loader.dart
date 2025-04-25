@@ -135,7 +135,7 @@ class LiquidLoaderState extends State<LiquidLoader>
         );
       case Shape.circle:
         // Return the painter for a circle-shaped bottle
-        return CustomCirclePainterWidget(
+        return CirclePainter(
           waves: waves,
           liquidLevel: widget.liquidLevel,
           borderColor: widget.borderColor,

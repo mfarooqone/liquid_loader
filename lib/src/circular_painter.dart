@@ -5,7 +5,7 @@ import 'wave.dart'; // your WaveLayer class with .color, .offset, .svgData
 
 /// A [CustomPainter] that draws a circular “bottle” of liquid,
 /// complete with animated waves, rising bubbles, and a glossy overlay.
-class CustomCirclePainterWidget extends CustomPainter {
+class CirclePainter extends CustomPainter {
   /// The layers of wave shapes to draw, from back (waves[0]) to front (waves.last).
   final List<WaveLayer> waves;
 
@@ -25,7 +25,7 @@ class CustomCirclePainterWidget extends CustomPainter {
   ///
   /// The [waves], [bubbles], [liquidLevel], and [borderColor] parameters are
   /// required. You can optionally override [glossColor] to tweak the shine.
-  CustomCirclePainterWidget({
+  CirclePainter({
     super.repaint,
     required this.waves,
     required this.bubbles,
@@ -117,5 +117,5 @@ class CustomCirclePainterWidget extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomCirclePainterWidget old) => true;
+  bool shouldRepaint(covariant CirclePainter old) => true;
 }
