@@ -8,7 +8,7 @@ Liquid Loader is a Flutter plugin that creates animated liquid effects inside cu
 
 This package is licensed under the BSD-3-Clause License. See the [LICENSE](LICENSE) file for more details.
 
-<img src="https://github.com/mfarooqone/liquid_loader/blob/master/example/assets/circle.gif?raw=true" width="120" height="250" /> <img src="https://github.com/mfarooqone/liquid_loader/blob/master/example/assets/rectangle.gif?raw=true" width="120" height="250" /> <img src="https://github.com/mfarooqone/liquid_loader/blob/master/example/assets/triangle.gif?raw=true" width="120" height="250" />
+<img src="https://github.com/mfarooqone/liquid_loader/blob/master/example/assets/circle.gif?raw=true" width="120" height="250" /> <img src="https://github.com/mfarooqone/liquid_loader/blob/master/example/assets/rectangle.gif?raw=true" width="120" height="250" /> <img src="https://github.com/mfarooqone/liquid_loader/blob/master/example/assets/triangle.gif?raw=true" width="120" height="250" /> <img src="https://github.com/mfarooqone/liquid_loader/blob/master/example/assets/spherical.gif?raw=true" width="120" height="250" />
 
 
 ## Features

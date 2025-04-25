@@ -26,13 +26,13 @@ class CustomCirclePainterWidget extends CustomPainter {
   /// The [waves], [bubbles], [liquidLevel], and [borderColor] parameters are
   /// required. You can optionally override [glossColor] to tweak the shine.
   CustomCirclePainterWidget({
-    Listenable? repaint,
+    super.repaint,
     required this.waves,
     required this.bubbles,
     required this.liquidLevel,
     required this.borderColor,
     this.glossColor = const Color(0x33FFFFFF),
-  }) : super(repaint: repaint);
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
