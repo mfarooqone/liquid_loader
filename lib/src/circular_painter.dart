@@ -33,7 +33,6 @@ class CirclePainter extends CustomPainter {
     required this.borderColor,
     this.glossColor = const Color(0x33FFFFFF),
   });
-
   @override
   void paint(Canvas canvas, Size size) {
     final radius = size.width / 2;
