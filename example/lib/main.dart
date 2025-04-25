@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
             liquidColor: Colors.blue,
             borderColor: Colors.grey,
             // capColor: Colors.orange,
-            liquidLevel: 0.6,
+            liquidLevel: 0.9,
             // text: "70%",
             textStyle: TextStyle(
               fontWeight: FontWeight.bold,

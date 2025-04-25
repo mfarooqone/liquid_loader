@@ -55,60 +55,64 @@ class CustomCirclePainterWidget extends CustomPainter {
     canvas.save();
     canvas.clipPath(circlePath);
 
-    // 3️⃣ Draw each wave, then fill below the last one
-    for (var i = 0; i < waves.length; i++) {
-      final wave = waves[i];
-      final paint = Paint()..color = wave.color;
+    // 3️⃣ Only draw liquid (waves + bubbles) if there's actually some
+    if (liquidLevel > 0) {
+      // — Draw each wave, then fill below the last one
+      for (var i = 0; i < waves.length; i++) {
+        final wave = waves[i];
+        final paint = Paint()..color = wave.color;
 
-      final desiredW = 15 * circleRect.width;
-      final desiredH = 0.15 * circleRect.height;
-      final translateX =
-          circleRect.left - wave.offset * (desiredW - circleRect.width);
-      final translateY =
-          circleRect.bottom - (liquidLevel * circleRect.height) - desiredH;
+        final desiredW = 15 * circleRect.width;
+        final desiredH = 0.1 * circleRect.height;
+        final translateX =
+            circleRect.left - wave.offset * (desiredW - circleRect.width);
+        final translateY =
+            circleRect.bottom - (liquidLevel * circleRect.height) - desiredH;
 
-      final matrix =
-          Matrix4.identity()
-            ..translate(translateX, translateY)
-            ..scale(
-              desiredW / wave.svgData.getBounds().width,
-              desiredH / wave.svgData.getBounds().height,
+        final matrix =
+            Matrix4.identity()
+              ..translate(translateX, translateY)
+              ..scale(
+                desiredW / wave.svgData.getBounds().width,
+                desiredH / wave.svgData.getBounds().height,
+              );
+
+        final path = wave.svgData.transform(matrix.storage);
+        canvas.drawPath(path, paint);
+
+        // fill under the very last wave
+        if (i == waves.length - 1) {
+          final fillTop = translateY + desiredH;
+          if (fillTop < circleRect.bottom) {
+            canvas.drawRect(
+              Rect.fromLTRB(
+                circleRect.left,
+                fillTop,
+                circleRect.right,
+                circleRect.bottom,
+              ),
+              paint,
             );
-      final path = wave.svgData.transform(matrix.storage);
-
-      canvas.drawPath(path, paint);
-
-      if (i == waves.length - 1) {
-        final fillTop = translateY + desiredH;
-        if (fillTop < circleRect.bottom) {
-          canvas.drawRect(
-            Rect.fromLTRB(
-              circleRect.left,
-              fillTop,
-              circleRect.right,
-              circleRect.bottom,
-            ),
-            paint,
-          );
+          }
         }
+      }
+
+      // — Draw bubbles rising through the liquid
+      for (final bubble in bubbles) {
+        final paint = Paint()..color = bubble.color;
+        final dx = circleRect.left + bubble.x * circleRect.width;
+        final dy =
+            circleRect.bottom - bubble.y * (liquidLevel * circleRect.height);
+        final bubbleRadius = bubble.size * radius;
+        canvas.drawCircle(Offset(dx, dy), bubbleRadius, paint);
       }
     }
 
-    // 4️⃣ Draw bubbles rising from bottom → top
-    for (final bubble in bubbles) {
-      final paint = Paint()..color = bubble.color;
-      final dx = circleRect.left + bubble.x * circleRect.width;
-      final dy =
-          circleRect.bottom - bubble.y * (liquidLevel * circleRect.height);
-      final bubbleRadius = bubble.size * radius;
-      canvas.drawCircle(Offset(dx, dy), bubbleRadius, paint);
-    }
-
-    // 5️⃣ Glossy overlay on top of everything
+    // 4️⃣ Glossy overlay on top of everything (liquid or empty)
     final glossPaint = Paint()..color = glossColor;
     canvas.drawRect(circleRect, glossPaint);
 
-    // 6️⃣ Restore to draw anything outside the circle (if needed)
+    // 5️⃣ Restore to draw anything outside the circle
     canvas.restore();
   }
 
